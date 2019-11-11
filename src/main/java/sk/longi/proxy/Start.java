@@ -1,4 +1,4 @@
-package sk.longi.proxy.verify.entity;
+package sk.longi.proxy;
 
 import sk.longi.proxy.proxyparser.control.JsonParser;
 
