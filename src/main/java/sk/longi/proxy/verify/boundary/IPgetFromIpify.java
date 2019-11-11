@@ -1,5 +1,6 @@
 package sk.longi.proxy.verify.boundary;
 
+import sk.longi.proxy.logging.Log;
 import sk.longi.proxy.proxyparser.entity.IpHost;
 
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ public class IPgetFromIpify implements IpGet {
     IpHost ip;
 
     @Override
+    @Log
     public String getMyIPFromWeb(String ip, String port) throws SocketException, IOException,Exception {
         String json = null;
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, Integer.valueOf(port)));
@@ -31,7 +33,6 @@ public class IPgetFromIpify implements IpGet {
                 scanner.close();
             }
         }
-//            System.out.println("My current IP address is " + s.next());
         return json;
     }
 

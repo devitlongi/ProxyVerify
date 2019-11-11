@@ -1,26 +1,29 @@
 package sk.longi.proxy.proxyparser.entity;
 
 
+import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDateTime;
 
-
+@ApplicationScoped
 public class IpHost {
     private String ip;
     private String port;
     private String Country;
-    private String anonimityLevel;
+    private String anonymityLevel;
     private Integer uptimeL;
     private Integer uptimeD;
     private LocalDateTime lastUpdate;
     private Integer responseTime;
-    private Boolean veryfy = null;
+    private Boolean verify = null;
 
-    public Boolean getVeryfy() {
-        return veryfy;
+
+
+    public Boolean getVerify() {
+        return verify;
     }
 
-    public void setVeryfy(Boolean veryfy) {
-        this.veryfy = veryfy;
+    public void setVerify(Boolean verify) {
+        this.verify = verify;
     }
 
     public IpHost() {
@@ -50,12 +53,12 @@ public class IpHost {
         Country = country;
     }
 
-    public java.lang.String getAnonimityLevel() {
-        return anonimityLevel;
+    public java.lang.String getAnonymityLevel() {
+        return anonymityLevel;
     }
 
-    public void setAnonimityLevel(java.lang.String anonimityLevel) {
-        this.anonimityLevel = anonimityLevel;
+    public void setAnonymityLevel(java.lang.String anonymityLevel) {
+        this.anonymityLevel = anonymityLevel;
     }
 
     public Integer getUptimeL() {
@@ -98,11 +101,11 @@ public class IpHost {
                 "ip='" + ip + '\'' +
                 ", port='" + port + '\'' +
                 ", Country='" + Country + '\'' +
-                ", anonimityLevel='" + anonimityLevel + '\'' +
+                ", anonimityLevel='" + anonymityLevel + '\'' +
                 ", uptimeL=" + uptimeL +
                 ", uptimeD=" + uptimeD +
                 ", lastUpdate=" + lastUpdate +
-                ", veryfy=" + veryfy +
+                ", veryfy=" + verify +
                 ", responseTime=" + responseTime +
                 '}';
     }

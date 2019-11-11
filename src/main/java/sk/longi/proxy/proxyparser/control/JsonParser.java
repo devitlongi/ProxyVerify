@@ -1,9 +1,16 @@
-package sk.longi.proxy.proxyparser.entity;
+package sk.longi.proxy.proxyparser.control;
 
+import sk.longi.proxy.logging.Log;
 import sk.longi.proxy.proxyparser.boundary.JsonStrings;
+import sk.longi.proxy.proxyparser.entity.IpHost;
+import sk.longi.proxy.proxyparser.entity.ListIpHost;
 import sk.longi.proxy.verify.entity.IpVerify;
 
-import javax.faces.bean.RequestScoped;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -17,46 +24,47 @@ import java.util.List;
 public class JsonParser {
     LocalDateTime dateTime = LocalDateTime.now();
 
-    List<IpHost> ipHosts = new ArrayList<>();
-
     @Inject
     IpVerify ipVerify;
 
     @Inject
+    @ListIpHost
+    private List<IpHost> ProxyList;
+
+    @Inject
     JsonStrings jsonStrings;
 
-    public List<IpHost> getIpHosts() {
-        return ipHosts;
-    }
 
-    public List<IpHost> parsreToProxy() {
+    @Log
+    public void parsreToProxy() {
 
 
-        List<java.lang.String> jsons = jsonStrings.getJsonsFromWeb();
-        for (java.lang.String json : jsons) {
+        List<String> jsons = jsonStrings.getJsonsFromWeb();
+        for (String json : jsons) {
             JsonReader reader = Json.createReader(new StringReader(json));
             JsonObject jsonObject = reader.readObject();
+
             IpHost ipHost = new IpHost();
+
             ipHost.setIp(jsonObject.getString("PROXY_IP"));
             ipHost.setPort(getDecFromHex(jsonObject.getString("PROXY_PORT")));
             ipHost.setCountry(jsonObject.getString("PROXY_COUNTRY"));
-            ipHost.setAnonimityLevel(jsonObject.getString("PROXY_TYPE"));
+            ipHost.setAnonymityLevel(jsonObject.getString("PROXY_TYPE"));
             ipHost.setUptimeL(parsreUptimeL(jsonObject.getString("PROXY_UPTIMELD")));
             ipHost.setUptimeD(parsreUptimeD(jsonObject.getString("PROXY_UPTIMELD")));
             ipHost.setLastUpdate(parsreTimeLastUpdate(jsonObject.getString("PROXY_LAST_UPDATE")));
 
-            ipHost.setVeryfy(ipVerify.verifyVisibility(ipHost.getIp(), ipHost.getPort()));
+            ipHost.setVerify(ipVerify.verifyVisibility(ipHost.getIp(), ipHost.getPort()));
             System.out.printf(ipHost.toString());
-            if (ipHost.getVeryfy()) ipHosts.add(ipHost);
+            if (ipHost.getVerify()) ProxyList.add(ipHost);
         }
 
-        return ipHosts;
     }
 
-    public java.lang.String getDecFromHex(java.lang.String hex) {
+    public String getDecFromHex(java.lang.String hex) {
 
         int decimal = Integer.parseInt(hex, 16);
-        return java.lang.String.valueOf(decimal);
+        return String.valueOf(decimal);
     }
 
     private Integer parsreUptimeL(java.lang.String s) {

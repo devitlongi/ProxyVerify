@@ -19,9 +19,6 @@ public class IpVerify {
 
     public boolean verifyVisibility(String ip, String port) {
 
-//        HttpClient client = new HttpClient();
-//        HttpConnectionManager conManager = client.getHttpConnectionManager();
-//        client.getHostConfiguration().setProxy("proxyserver.example.com", 8080);
 
         boolean check = false;
         try {

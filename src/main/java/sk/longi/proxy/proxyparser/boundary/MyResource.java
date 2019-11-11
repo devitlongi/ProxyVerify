@@ -1,29 +1,31 @@
 package sk.longi.proxy.proxyparser.boundary;
 
+import sk.longi.proxy.proxyparser.entity.IpHost;
+import sk.longi.proxy.proxyparser.entity.ListIpHost;
 import sk.longi.proxy.verify.boundary.IpGet;
 import sk.longi.proxy.verify.boundary.Ipifi;
-import sk.longi.proxy.proxyparser.entity.JsonParser;
+import sk.longi.proxy.proxyparser.control.JsonParser;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * Root resource (exposed at "myresource" path)
  */
 @Path("/proxy")
+
 public class MyResource {
 
-
     @Inject
-    @Ipifi
+    @ListIpHost
+    private List<IpHost> ProxyList;
 
-    IpGet ipGet;
 
-    @Inject
-    JsonParser jsonParser;
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -35,11 +37,12 @@ public class MyResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getIt() {
-        jsonParser.parsreToProxy();
-        if (jsonParser.getIpHosts().isEmpty()) {
+//        jsonParser.parsreToProxy();
+        System.out.println("Request **************************");
+        if (ProxyList.isEmpty()) {
             return "No Matches";
         }
-        return jsonParser.getIpHosts().get(1).toString();
+        return ProxyList.get(1).toString()+"\n"+ProxyList.get(2).toString();
     }
 
     @Path("/test")
