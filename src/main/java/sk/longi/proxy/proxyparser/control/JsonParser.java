@@ -29,7 +29,7 @@ public class JsonParser {
 
     @Inject
     @ListIpHost
-    private List<IpHost> ProxyList;
+    private List<IpHost> proxyList;
 
     @Inject
     JsonStrings jsonStrings;
@@ -56,7 +56,8 @@ public class JsonParser {
 
             ipHost.setVerify(ipVerify.verifyVisibility(ipHost.getIp(), ipHost.getPort()));
             System.out.printf(ipHost.toString());
-            if (ipHost.getVerify()) ProxyList.add(ipHost);
+            if (ipHost.getVerify()) proxyList.add(ipHost);
+            System.out.printf("ProxyList size: "+String.valueOf(proxyList.size()));
         }
 
     }

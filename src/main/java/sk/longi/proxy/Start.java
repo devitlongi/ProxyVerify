@@ -3,23 +3,23 @@ package sk.longi.proxy;
 import sk.longi.proxy.proxyparser.control.JsonParser;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+import javax.ejb.*;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.servlet.ServletContextListener;
 
 
 
-@Startup
 @Singleton
-
-public class Start {
+public class Start implements javax.servlet.ServletContextListener {
     @Inject
     JsonParser jsonParser;
 
-    @PostConstruct
-    void atStartup() { jsonParser.parsreToProxy();}
+
+    @Schedule(second = "0")
+    void atStartup() {
+        jsonParser.parsreToProxy();
+    }
 
 //    @PreDestroy
 //    void atShutdown() { ... }

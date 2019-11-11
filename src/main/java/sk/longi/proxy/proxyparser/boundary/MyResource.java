@@ -18,7 +18,6 @@ import java.util.List;
  * Root resource (exposed at "myresource" path)
  */
 @Path("/proxy")
-
 public class MyResource {
 
     @Inject
