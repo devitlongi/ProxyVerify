@@ -1,4 +1,4 @@
-package sk.longi.proxy;
+package sk.longi.proxy.verify.entity;
 
 import sk.longi.proxy.proxyparser.control.JsonParser;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 @Startup
 @Singleton
 
-public class Main {
+public class Start {
     @Inject
     JsonParser jsonParser;
 
