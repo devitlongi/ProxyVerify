@@ -42,6 +42,7 @@ public class MyResource {
         if (ProxyList.isEmpty()) {
             return "No Matches";
         }
+
         return ProxyList.get(1).toString()+"\n"+ProxyList.get(2).toString();
     }
 
