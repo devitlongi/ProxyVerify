@@ -6,8 +6,10 @@ import sk.longi.proxy.verify.boundary.IpGet;
 import sk.longi.proxy.verify.boundary.Ipifi;
 import sk.longi.proxy.proxyparser.control.JsonParser;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.servlet.annotation.WebListener;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,6 +21,9 @@ import java.util.List;
  */
 @Path("/proxy")
 public class MyResource {
+
+
+
 
     @Inject
     @ListIpHost

@@ -37,6 +37,7 @@ public class JsonParser {
 
     @Log
     public void parsreToProxy() {
+        System.out.printf("Start Parsre");
 
 
         List<String> jsons = jsonStrings.getJsonsFromWeb();
@@ -57,7 +58,7 @@ public class JsonParser {
             ipHost.setVerify(ipVerify.verifyVisibility(ipHost.getIp(), ipHost.getPort()));
             System.out.printf(ipHost.toString());
             if (ipHost.getVerify()) proxyList.add(ipHost);
-            System.out.printf("ProxyList size: "+String.valueOf(proxyList.size()));
+            System.out.println("***************************ProxyList size: "+(proxyList.size()));
         }
 
     }

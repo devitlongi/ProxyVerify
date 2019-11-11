@@ -5,19 +5,24 @@ import sk.longi.proxy.proxyparser.control.JsonParser;
 import javax.annotation.PostConstruct;
 import javax.ejb.*;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Initialized;
 import javax.inject.Inject;
 import javax.servlet.ServletContextListener;
 
+import static javax.ejb.ConcurrencyManagementType.BEAN;
 
 
 @Singleton
-public class Start implements javax.servlet.ServletContextListener {
+@Startup
+public class Start  {
     @Inject
     JsonParser jsonParser;
 
 
-    @Schedule(second = "0")
-    void atStartup() {
+
+    @Schedule(second="0", minute="*", hour="*",persistent = false)
+    protected void init(){
+
         jsonParser.parsreToProxy();
     }
 
