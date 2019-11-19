@@ -48,25 +48,14 @@ public class JsonParser {
     @MessageQ
     Message message;
 
-    @Inject
-    JsonStrings jsonStrings;
 
 
 
-    public void parsreToProxy() {
-        System.out.printf("Start Parsre");
-
-
-        List<String> jsons = jsonStrings.getJsonsFromWeb();
-        for (String json : jsons) {
-            parse(json);
-        }
-
-    }
     @Asynchronous
-    private void parse(String json) {
-        num++;
-        int myNum = num;
+    @RequestScoped
+    public void parse(String json) {
+
+
         System.out.println("-----------------------------start parse"+num);
         JsonReader reader = Json.createReader(new StringReader(json));
         JsonObject jsonObject = reader.readObject();
@@ -90,7 +79,7 @@ public class JsonParser {
             messageEvent.fire(message);
 
         }
-        System.out.println("***************************Proxy finished :"+myNum+"  -ProxyList size: "+(proxyList.size()));
+        System.out.println("***************************Proxy finished :"+"  -ProxyList size: "+(proxyList.size()));
     }
 
     public String getDecFromHex(java.lang.String hex) {
