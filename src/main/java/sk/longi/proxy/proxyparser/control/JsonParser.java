@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
@@ -27,7 +28,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Singleton
+@RequestScoped
 public class JsonParser {
     LocalDateTime dateTime = LocalDateTime.now();
     int num =0;
@@ -66,7 +67,7 @@ public class JsonParser {
     private void parse(String json) {
         num++;
         int myNum = num;
-        System.out.println("start parse"+num);
+        System.out.println("-----------------------------start parse"+num);
         JsonReader reader = Json.createReader(new StringReader(json));
         JsonObject jsonObject = reader.readObject();
 
@@ -89,7 +90,7 @@ public class JsonParser {
             messageEvent.fire(message);
 
         }
-        System.out.println("***************************Proxy :"+myNum+"  -ProxyList size: "+(proxyList.size()));
+        System.out.println("***************************Proxy finished :"+myNum+"  -ProxyList size: "+(proxyList.size()));
     }
 
     public String getDecFromHex(java.lang.String hex) {
