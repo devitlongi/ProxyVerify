@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@Stateless
 public class JsonParser {
     LocalDateTime dateTime = LocalDateTime.now();
     int num =0;
