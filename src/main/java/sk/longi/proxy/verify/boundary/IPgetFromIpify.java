@@ -3,6 +3,8 @@ package sk.longi.proxy.verify.boundary;
 import sk.longi.proxy.logging.Log;
 import sk.longi.proxy.proxyparser.entity.IpHost;
 
+import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -11,14 +13,13 @@ import java.util.Scanner;
 
 
 @Ipifi
-@Singleton
+@RequestScoped
 public class IPgetFromIpify implements IpGet {
 
-    @Inject
-    IpHost ip;
+
 
     @Override
-    @Log
+
     public String getMyIPFromWeb(String ip, String port) throws SocketException, IOException,Exception {
         String json = null;
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, Integer.valueOf(port)));

@@ -2,18 +2,14 @@ package sk.longi.proxy.proxyparser.boundary;
 
 import sk.longi.proxy.proxyparser.entity.IpHost;
 import sk.longi.proxy.proxyparser.entity.ListIpHost;
-import sk.longi.proxy.verify.boundary.IpGet;
-import sk.longi.proxy.verify.boundary.Ipifi;
-import sk.longi.proxy.proxyparser.control.JsonParser;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.servlet.annotation.WebListener;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -27,7 +23,7 @@ public class MyResource {
 
     @Inject
     @ListIpHost
-    private List<IpHost> ProxyList;
+    private List<IpHost> proxyList;
 
 
 
@@ -40,14 +36,15 @@ public class MyResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getIt() {
+    public Response getIt() {
 //        jsonParser.parsreToProxy();
-        System.out.println("Request **************************");
-        if (ProxyList.isEmpty()) {
-            return "No Matches";
+
+
+        if (proxyList.isEmpty()||proxyList.size()<3) {
+            return  Response.ok("No matches").build();
         }
 
-        return ProxyList.get(1).toString()+"\n"+ProxyList.get(2).toString();
+        return Response.ok(proxyList.get(1).toString()+"\n"+proxyList.get(2).toString()).build();
     }
 
     @Path("/test")

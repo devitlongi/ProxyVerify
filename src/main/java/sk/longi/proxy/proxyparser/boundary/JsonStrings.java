@@ -2,6 +2,8 @@ package sk.longi.proxy.proxyparser.boundary;
 
 import sk.longi.proxy.logging.Log;
 
+import javax.ejb.Asynchronous;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +13,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-@Log
-@RequestScoped
+
+
 public class JsonStrings {
 
     List<String> listJson = new ArrayList<>();

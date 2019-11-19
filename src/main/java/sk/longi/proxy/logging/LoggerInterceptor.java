@@ -21,7 +21,7 @@ public class LoggerInterceptor {
     public Object logMethod(InvocationContext context) throws Exception {
 
         final Logger LOGGER = LoggerFactory.getLogger(context.getClass());
-//        LOGGER.info("Method name:{} ", context.getMethod().getName());
+        LOGGER.info("**************************************Method name:{} ", context.getMethod().getName());
 //        LOGGER.debug("Method param:{} ", context.getContextData().values());
 //        LOGGER.debug("Method param1:{} ", context.getParameters().toString());
 //        LOGGER.debug("Method param2:{} ", context.getMethod().toString());

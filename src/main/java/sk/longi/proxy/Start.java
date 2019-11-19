@@ -20,7 +20,7 @@ public class Start  {
 
 
 
-    @Schedule(second="0", minute="*", hour="*",persistent = false)
+    @Schedule(second="3", minute="*", hour="*",persistent = false)
     protected void init(){
 
         jsonParser.parsreToProxy();
