@@ -15,7 +15,7 @@ import static javax.ejb.ConcurrencyManagementType.BEAN;
 @Singleton
 @Startup
 public class Start  {
-    @Inject
+    @EJB
     JsonParser jsonParser;
 
 
