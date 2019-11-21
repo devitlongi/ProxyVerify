@@ -14,7 +14,7 @@ import java.util.List;
 @Singleton
 public class ProxyDao  {
 
-    @PersistenceContext(unitName = "sk.longi.proxy", type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "sk.longi.proxy", type = PersistenceContextType.EXTENDED)
     private EntityManager entityManager;
 
     public void addProxy(ProxyFull proxy) throws Exception {
