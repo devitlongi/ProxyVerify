@@ -1,15 +1,12 @@
 package sk.longi.proxy.websocket;
 
-import sk.longi.proxy.proxyparser.entity.IpHost;
 import sk.longi.proxy.proxyparser.entity.ListIpHost;
+import sk.longi.proxy.proxyparser.entity.ProxyFull;
 import sk.longi.proxy.websocket.entity.Message;
 import sk.longi.proxy.websocket.entity.MessageQ;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.websocket.*;
@@ -37,7 +34,7 @@ public class ProxysEndpoint {
 
     @Inject
     @ListIpHost
-    private List<IpHost> proxyList;
+    private List<ProxyFull> proxyList;
 
 
     public ProxysEndpoint() {

@@ -1,12 +1,9 @@
 package sk.longi.proxy.websocket.entity;
 
-import sk.longi.proxy.proxyparser.entity.IpHost;
+import sk.longi.proxy.proxyparser.entity.ProxyFull;
 import sk.longi.proxy.proxyparser.entity.ListIpHost;
 
-import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -24,7 +21,7 @@ public  class Message {
 
     @Inject
     @ListIpHost
-    private List<IpHost> proxyList;
+    private List<ProxyFull> proxyList;
 
 
     public void setProxyToGet(String proxyToGet) {
@@ -47,11 +44,13 @@ public  class Message {
         return proxyNew;
     }
 
-    public void setMessage( ){
-
-        this.proxysLenght = proxyList.size();
-        this.proxyNew = proxyList.get(this.proxysLenght-1).toString();
-
-
+    public void setProxysLenght(Integer proxysLenght) {
+        this.proxysLenght = proxysLenght;
     }
+
+    public void setProxyNew(String proxyNew) {
+        this.proxyNew = proxyNew;
+    }
+
+
 }

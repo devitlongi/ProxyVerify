@@ -1,12 +1,6 @@
 package sk.longi.proxy.verify.boundary;
 
-import sk.longi.proxy.logging.Log;
-import sk.longi.proxy.proxyparser.entity.IpHost;
-
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;

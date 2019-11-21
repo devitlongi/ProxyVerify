@@ -25,8 +25,9 @@ public class Start  {
 
 
 
-    @Schedule(second="3", minute="*", hour="*",persistent = false)
-    protected void init(){
+    @Schedule(second="0", minute="*", hour="*",persistent = false)
+
+    protected void initParsringAndVerify(){
 
         List<String> jsons = jsonStrings.getJsonsFromWeb();
         for (String json : jsons) {

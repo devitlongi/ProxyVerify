@@ -1,7 +1,6 @@
 package sk.longi.proxy.websocket;
 
 
-import com.google.gson.Gson;
 import sk.longi.proxy.websocket.entity.Message;
 
 import javax.json.Json;

@@ -1,13 +1,12 @@
 package sk.longi.proxy.proxyparser.boundary;
 
-import sk.longi.proxy.proxyparser.entity.IpHost;
+import sk.longi.proxy.proxyparser.entity.ProxyFull;
 import sk.longi.proxy.proxyparser.entity.ListIpHost;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -23,7 +22,7 @@ public class MyResource {
 
     @Inject
     @ListIpHost
-    private List<IpHost> proxyList;
+    private List<ProxyFull> proxyList;
 
 
 

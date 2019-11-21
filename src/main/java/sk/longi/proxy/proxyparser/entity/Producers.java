@@ -10,7 +10,7 @@ public class Producers {
     @Produces
     @ApplicationScoped
     @ListIpHost
-    public List<IpHost> produce(){
+    public List<ProxyFull> produce(){
         return new ArrayList<>();
     }
 }
