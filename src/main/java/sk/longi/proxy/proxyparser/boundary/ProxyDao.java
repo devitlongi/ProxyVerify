@@ -26,7 +26,7 @@ public class ProxyDao  {
     }
 
 //    public List<ProxyFull> getMovies() throws Exception {
-//        Query query = entityManager.createQuery("SELECTFROM proxy",ProxyFull.class);
+//        Query query = entityManager.createQuery("SELECT FROM proxy",ProxyFull.class);
 //        return query.getResultList();
 //    }
 
