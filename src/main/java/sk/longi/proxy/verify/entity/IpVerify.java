@@ -4,11 +4,13 @@ import sk.longi.proxy.verify.boundary.IpGet;
 import sk.longi.proxy.verify.boundary.Ipifi;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import java.io.IOException;
 import java.io.StringReader;
+
 
 public class IpVerify {
 

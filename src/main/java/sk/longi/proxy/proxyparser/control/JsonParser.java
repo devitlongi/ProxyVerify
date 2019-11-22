@@ -22,8 +22,7 @@ import java.util.List;
 
 @Stateless
 public class JsonParser {
-    
-    int num =0;
+
 
     @EJB
     ProxyDao proxyDao;
@@ -43,7 +42,7 @@ public class JsonParser {
     @MessageQ
     Message message;
 
-    @Asynchronous
+//   @Asynchronous
     @RequestScoped
     public void parse(String json) {
 

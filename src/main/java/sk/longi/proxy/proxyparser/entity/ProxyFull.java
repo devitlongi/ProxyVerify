@@ -8,25 +8,19 @@ import java.time.LocalDateTime;
 
 @RequestScoped
 @Entity
-@Table(name = "proxy")
+@Table
 public class ProxyFull {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
     @Column
     @NotNull
     private String ip;
 
-    @Column
+    @Column(name="PORT1")
     @NotNull
     private String port;
 
@@ -51,17 +45,25 @@ public class ProxyFull {
     @Column
     private Boolean verify = false;
 
-
-
+    @Column
     public Boolean getVerify() {
         return verify;
     }
+
 
     public void setVerify(Boolean verify) {
         this.verify = verify;
     }
 
     public ProxyFull() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public java.lang.String getIp() {
