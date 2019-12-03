@@ -31,8 +31,11 @@ public class IpVerify {
         } catch (Exception e) {
             System.err.println("Error: Exception");
         }
+        finally {
+            return check;
+        }
 
-        return check;
+
     }
 
     private String parsreIP(String json) {

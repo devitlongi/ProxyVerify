@@ -13,12 +13,12 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import java.util.List;
 
-@Stateless
+@Singleton
 public class ProxyDao  {
 
     @PersistenceContext(unitName = "sk.longi.proxy")
     private EntityManager entityManager;
-    @Asynchronous
+
     public void addProxy(ProxyFull proxy) throws Exception {
         entityManager.persist(proxy);
 

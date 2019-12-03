@@ -42,7 +42,7 @@ public class JsonParser {
     @MessageQ
     Message message;
 
-//   @Asynchronous
+   @Asynchronous
     @RequestScoped
     public void parse(String json) {
 
@@ -62,24 +62,27 @@ public class JsonParser {
         long startTime = System.currentTimeMillis();
         ipHost.setVerify(ipVerify.verifyVisibility(ipHost.getIp(), ipHost.getPort()));
         long endTime = System.currentTimeMillis();
-        ipHost.setResponse_Time((int)(startTime-endTime));
+        ipHost.setResponse_Time((int)(endTime-startTime));
 
 
-        System.out.printf(ipHost.toString());
-        if (ipHost.getVerify()){
+
+        if (ipHost.getVerify()==true){
+            System.out.printf(ipHost.toString());
 
             proxyList.add(ipHost);
             message.setProxysLenght(proxyList.size());
             message.setProxyNew(proxyList.get(proxyList.size()-1).toString());
             messageEvent.fire(message);
 
+            try {
+                proxyDao.addProxy(ipHost);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         System.out.println("***************************Proxy finished :"+"  -ProxyList size: "+(proxyList.size()));
-        try {
-            proxyDao.addProxy(ipHost);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     public String getDecFromHex(java.lang.String hex) {

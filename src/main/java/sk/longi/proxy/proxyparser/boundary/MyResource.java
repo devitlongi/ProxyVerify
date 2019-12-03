@@ -17,9 +17,6 @@ import java.util.List;
 @Path("/proxy")
 public class MyResource {
 
-
-
-
     @Inject
     @ListIpHost
     private List<ProxyFull> proxyList;

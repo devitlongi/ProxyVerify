@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @RequestScoped
 @Entity
-@Table
+@Table(name = "proxyfull")
 public class ProxyFull {
 
     @Id
@@ -36,7 +36,7 @@ public class ProxyFull {
     @Column
     private Integer uptime_D;
 
-    @Column
+   
     private LocalDateTime last_Update;
 
     @Column
@@ -45,7 +45,7 @@ public class ProxyFull {
     @Column
     private Boolean verify = false;
 
-    @Column
+
     public Boolean getVerify() {
         return verify;
     }
@@ -147,3 +147,5 @@ public class ProxyFull {
                 '}';
     }
 }
+
+

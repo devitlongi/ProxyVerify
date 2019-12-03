@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JsonStrings {
+public class PROXYJsonStringsFromWeb {
 
     List<String> listJson = new ArrayList<>();
 
@@ -53,7 +53,6 @@ public class JsonStrings {
                 System.out.println("Page http://www.gatherproxy.com/  is Empty");
             }
         }
-        System.out.println(" Complete");
         return listJson;
     }
 }

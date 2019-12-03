@@ -1,30 +1,30 @@
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-    <!-- Define persistence unit -->
-    <persistence-unit name="sk.longi.proxy" transaction-type="RESOURCE_LOCAL">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="sk.longi.proxy" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Dont forget to inform to your persistence.xml the datasource name -->
+        <jta-data-source>java:jboss/datasources/mydb</jta-data-source>
+        <!-- Note: If you need to run a main class to popolate your database, remove the tag above -->
 
         <class>sk.longi.proxy.proxyparser.entity.ProxyFull</class>
 
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
-
-
+        <!-- Once your are using a datasource, is not required to configure properties below -->
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mysql-proxy" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="longi" />
+<!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/mydb" />-->
+<!--            <property name="javax.persistence.jdbc.user" value="root" />-->
+<!--            <property name="javax.persistence.jdbc.password" value="longi" />-->
 
+            <property name="javax.persistence.validation.mode" value="none" />
 
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true"/>
-
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-            <property name="hibernate.use_sql_comments" value="true"/>
-
-<!--            <property name="hibernate.hbm2ddl.auto" value="create" /> &lt;!&ndash; create / create-drop / update &ndash;&gt;-->
-
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
         </properties>
-
     </persistence-unit>
 </persistence>
